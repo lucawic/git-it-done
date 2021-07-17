@@ -14,8 +14,8 @@ var formSubmitHandler = function(event) {
     getUserRepos(username);
 
     // clear old content
-    repoContainerEl.textContent = '';
-    nameInputEl.value = '';
+    repoContainerEl.textContent = "";
+    nameInputEl.value = "";
   } else {
     alert('Please enter a GitHub username');
   }
@@ -23,7 +23,7 @@ var formSubmitHandler = function(event) {
 
 var getUserRepos = function(user) {
   // format the github api url
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+  var apiUrl = "https://api.github.com/users/" + user + "/repos";
 
   // make a get request to url
   fetch(apiUrl)
@@ -59,8 +59,9 @@ var displayRepos = function(repos, searchTerm) {
     var repoName = repos[i].owner.login + '/' + repos[i].name;
 
     // create a container for each repo
-    var repoEl = document.createElement('div');
+    var repoEl = document.createElement("a");
     repoEl.classList = 'list-item flex-row justify-space-between align-center';
+    repoContainerEl.setAttribute("href", "./index.html" + repoName);
 
     // create a span element to hold repository name
     var titleEl = document.createElement('span');
