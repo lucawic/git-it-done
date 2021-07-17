@@ -1,11 +1,11 @@
-var repoNameEl = document.querySelector("#repo-name")
+var repoNameEl = document.querySelector("#repo-name");
 var issueContainerEl = document.querySelector("#issues-container");
-var limitWarningEL = document.querySelector("#limit-warning");
+var limitWarningEl = document.querySelector("#limit-warning");
 
-var getRepoName = function(){
+var getRepoName = function() {
     //grab repository name from url query string
     var queryString = document.location.search;
-    var repoName =  queryString.split("=")[1];
+    var repoName = queryString.split("=")[1];
    
    if (repoName) {
        //display the name on the page
@@ -44,7 +44,7 @@ var getRepoIssues = function(repo) {
 
 var displayIssues = function(issues) {
     if (issues.length === 0) {
-        issueContainerEl.textContent = "this repo has no open issues!";
+        issueContainerEl.textContent = "This repo has no open issues!";
         return;
     }
 
@@ -67,7 +67,7 @@ var displayIssues = function(issues) {
         var typeEl = document.createElement("span");
 
         //check if issue is an actual issue or a pull request
-        if(issues[i].pull_request) {
+        if (issues[i].pull_request) {
             typeEl.textContent = "(Pull request)";
         } else {
             typeEl.textContent = "(Issue)";
@@ -83,17 +83,17 @@ var displayIssues = function(issues) {
 
 var displayWarning = function(repo){
     //add text to warning container
-    limitWarningEL.textContent = "to see more than 30 issues, visit ";
+    limitWarningEl.textContent = "to see more than 30 issues, visit ";
 
 
     //creates link element
     var linkEl = document.createElement("a");
-    linkEl.textContent = "see more Issues on Github.com";
-    linkEl.setAttribute ("href", "https://github.com/" + repo + "/issues");
-    linkEl.setAttribute ("target", "_blank");
+    linkEl.textContent = "GitHub.com";
+    linkEl.setAttribute("href", "https://github.com/" + repo + "/issues");
+    linkEl.setAttribute("target", "_blank");
 
     //append to the warning container
-    limitWarningEL.appendChild(linkEl);
+    limitWarningEl.appendChild(linkEl);
 };
 
 getRepoName();
